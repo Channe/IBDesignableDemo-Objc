@@ -14,7 +14,7 @@
 @end
 
 @implementation CustomView {
-    UIView *_view;
+    UIView *_aView;
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
@@ -32,9 +32,12 @@
 }
 
 - (void)xibSetup {
-    _view = [self loadViewFromNib];
-    _view.frame = self.bounds;
-    [self addSubview:_view];
+    _aView = [self loadViewFromNib];
+    //让自动布局生效
+    _aView.frame = self.bounds;
+    //让_aView伸展到容器视图
+    _aView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+    [self addSubview:_aView];
 }
 
 - (UIView *)loadViewFromNib {
